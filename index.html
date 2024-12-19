@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sayı Tahmin Oyunu</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-image: url(pexels-codioful-6985136.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+    </style>
+</head>
+<body>
+    <div id="game-container">
+        <h1>Sayı Tahmin Oyununa Hoş Geldiniz</h1>
+        <p>1 ile 100 arasında bir sayı tuttum. Tahmin etmeye çalış.</p>
+        <p id="message"></p>
+        <form id="game-form" onsubmit="tahminEt(); return false;">
+            <input type="number" id="tahmin" placeholder="Tahmininiz" required>
+            <input type="submit" value="Tahmin Et">
+        </form>
+        <p>Kalan hakkınız: <span id="hak">10</span></p>
+        <button id="restart" style="display: none;" onclick="restartGame()">Tekrar Başlat</button>
+    </div>
+    <script>
+        let rannum;
+        let hak;
+
+        function startGame() {
+            rannum = Math.floor(Math.random() * 100) + 1;
+            hak = 10;
+            document.getElementById('hak').textContent = hak;
+            document.getElementById('message').textContent = '';
+            document.getElementById('restart').style.display = 'none'; // "Tekrar Başlat" butonunu gizle
+            document.getElementById('game-form').style.display = 'block'; // Formu tekrar göster
+        }
+
+        function tahminEt() {
+            const tahmin = parseInt(document.getElementById('tahmin').value);
+            let message = '';
+
+            if (hak > 0) {
+                hak--;
+
+                if (tahmin < 1 || tahmin > 100) {
+                    message = "1 ile 100 arasında bir sayı söyleyin";
+                } else if (tahmin === rannum) {
+                    message = "Tebrikler! Doğru tahmin!";
+                    document.getElementById('game-form').style.display = 'none'; // Formu gizle
+                    document.getElementById('restart').style.display = 'block'; // Yeniden başlat butonu görünür
+                } else if (tahmin < rannum) {
+                    message = "Daha yüksek bir sayı söyleyin.";
+                } else if (tahmin > rannum) {
+                    message = "Daha düşük bir sayı söyleyin.";
+                }
+            }
+
+            if (hak === 0 && tahmin !== rannum) {
+                message = "Hakkınız kalmadı! Oyun bitti! Tuttuğum sayı: " + rannum;
+                document.getElementById('game-form').style.display = 'none'; // Formu gizle
+                document.getElementById('restart').style.display = 'block'; // Yeniden başlat butonu görünür
+            }
+
+            document.getElementById('message').textContent = message;
+            document.getElementById('hak').textContent = hak;
+        }
+
+        function restartGame() {
+            startGame(); // Oyunu tekrar başlat
+        }
+
+        // Sayfa yüklendiğinde oyunu başlat
+        window.onload = startGame;
+    </script>
+</body>
+</html>

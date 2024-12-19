@@ -1,0 +1,122 @@
+/* Genel Stil Ayarları */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f8ff;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* Oyun Kutusu */
+.container {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+    padding: 20px 40px;
+    max-width: 400px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 50px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    margin-top: 200px;
+}
+
+p {
+    font-size: 16px;
+    margin: 10px 0;
+    font-weight: bold;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Giriş Alanı ve Buton Stili */
+input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.hidden {
+    display: none; /* Görünmez yapar */
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #0b7dda;
+}
+
+
+/* Mesaj ve Hata Göstergeleri */
+#message {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 20px 0;
+    color: #333;
+}
+
+#hak {
+    font-weight: bold;
+    color: #E91E63;
+}
+
+/* Mobil Cihazlar için Uyumlu Tasarım */
+@media (max-width: 600px) {
+    .container {
+        padding: 15px 20px;
+    }
+    
+    h1 {
+        font-size: 20px;
+    }
+
+    input[type="number"],
+    input[type="submit"] {
+        font-size: 14px;
+        padding: 8px;
+    }
+}
